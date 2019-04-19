@@ -29,11 +29,18 @@ public class Test {
         while (true) {
             byte[] msgBytes = read(socket);
             String s = new String(Arrays.copyOfRange(msgBytes, 0, msgBytes.length));
-            System.out.println(s);
+            printMsg(s);
             Thread.sleep(1);
         }
         //关闭链接
         //socket.close();
+    }
+
+    private static void printMsg(String s) {
+        if (!s.startsWith("type@=chatmsg/")) {
+            return;
+        }
+        System.out.println(s);
     }
 
     /**

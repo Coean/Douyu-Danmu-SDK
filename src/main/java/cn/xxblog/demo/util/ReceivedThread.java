@@ -1,18 +1,18 @@
 package cn.xxblog.demo.util;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
-public class RecivedThread extends Thread {
+public class ReceivedThread extends Thread {
     private Socket socket;
 
-    public RecivedThread(Socket socket) {
+    public ReceivedThread(Socket socket) {
         this.socket = socket;
     }
 
@@ -20,17 +20,18 @@ public class RecivedThread extends Thread {
     public void run() {
         log.info("start receive message.");
         try {
-
-            if (socket == null || !socket.isConnected()) return;
+            if (socket == null || !socket.isConnected()) {
+                return;
+            }
 
             int len;
             byte[] buffer = new byte[8 * 1024];
             InputStream in = socket.getInputStream();
 
-            while (socket.isConnected() //链接结束
-                    && (len = in.read(buffer)) != -1) {
+            while (socket.isConnected() && (len = in.read(buffer)) != -1) {
                 splitResponse(Arrays.copyOf(buffer, len)).forEach(System.out::println);
             }
+            System.out.println(socket.isConnected());
             log.info("receive message finished.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,7 +47,9 @@ public class RecivedThread extends Thread {
      * 4.遍历分离出多组Response
      */
     public static List<String> splitResponse(byte[] buffer) {
-        if (buffer == null || buffer.length <= 0) return null;
+        if (buffer == null || buffer.length <= 0) {
+            return null;
+        }
 
         List<String> resList = new ArrayList<>();
         String byteArray = HexUtil.bytes2HexString(buffer).toLowerCase();
@@ -54,10 +57,14 @@ public class RecivedThread extends Thread {
         String[] responseStrings = byteArray.split("b2020000");
         int end;
         for (int i = 1; i < responseStrings.length; i++) {
-            if (!responseStrings[i].contains("00")) continue;
+            if (!responseStrings[i].contains("00")) {
+                continue;
+            }
             end = responseStrings[i].indexOf("00");
             byte[] bytes = HexUtil.hexString2Bytes(responseStrings[i].substring(0, end));
-            if (bytes != null) resList.add(new String(bytes));
+            if (bytes != null) {
+                resList.add(new String(bytes));
+            }
         }
 
         return resList;

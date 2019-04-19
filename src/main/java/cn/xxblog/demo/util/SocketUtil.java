@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 
+/**
+ * @author barryp
+ */
 @Slf4j
 public class SocketUtil {
     public static final String host = "openbarrage.douyutv.com";
@@ -54,14 +57,12 @@ public class SocketUtil {
         String login = "type@=loginreq/roomid@=757122/\0";
         String joinGroup = "type@=joingroup/rid@=757122/gid@=-9999/\0";
 
-
         SocketUtil socketUtil = new SocketUtil();
         socketUtil.send(new Message(login));
         socketUtil.send(new Message(joinGroup));
 
-        new Thread(new KeepAliveThread()).start();
-
-        new Thread(new RecivedThread(socket)).start();
+        new KeepAliveThread().start();
+        new ReceivedThread(socket).start();
 
         log.info("end");
     }
