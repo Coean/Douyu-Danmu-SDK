@@ -6,14 +6,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cn.xxblog.demo.Core;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ReceivedThread extends Thread {
     private Socket socket;
 
+    private Core core;
+
     public ReceivedThread(Socket socket) {
         this.socket = socket;
+        core = Core.getInstance();
     }
 
     @Override
@@ -29,7 +33,7 @@ public class ReceivedThread extends Thread {
             InputStream in = socket.getInputStream();
 
             while (socket.isConnected() && (len = in.read(buffer)) != -1) {
-                splitResponse(Arrays.copyOf(buffer, len)).forEach(System.out::println);
+                splitResponse(Arrays.copyOf(buffer, len)).forEach(core::handMessage);
             }
             System.out.println(socket.isConnected());
             log.info("receive message finished.");

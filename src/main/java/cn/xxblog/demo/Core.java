@@ -8,12 +8,12 @@ public class Core {
 
     private static Core core = null;
 
-    Map<String, MsgConverter> registerConverter;
+    static Map<String, MsgConverter> registerConverter;
 
     private Core() {
     }
 
-    public synchronized Core getInstance() {
+    public static synchronized Core getInstance() {
         if (core == null) {
             core = new Core();
             registerConverter = new HashMap<>();
@@ -25,5 +25,9 @@ public class Core {
     public boolean registeConverter(MsgConverter msgConverter) {
         registerConverter.put(msgConverter.converterMsgType().getType(), msgConverter);
         return true;
+    }
+
+    public void handMessage(String message) {
+        System.out.println(message);
     }
 }
