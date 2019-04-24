@@ -1,4 +1,4 @@
-package cn.xxblog.demo;
+package cn.xxblog.demo.vo;
 
 import lombok.Data;
 

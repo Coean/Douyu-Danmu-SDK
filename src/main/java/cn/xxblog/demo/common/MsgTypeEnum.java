@@ -1,4 +1,4 @@
-package cn.xxblog.demo;
+package cn.xxblog.demo.common;
 
 public enum MsgTypeEnum {
     CHAT_MSG("chat_msg"),

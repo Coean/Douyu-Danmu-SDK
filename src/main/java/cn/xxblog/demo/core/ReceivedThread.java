@@ -1,4 +1,4 @@
-package cn.xxblog.demo.util;
+package cn.xxblog.demo.core;
 
 import java.io.InputStream;
 import java.net.Socket;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.xxblog.demo.Core;
+import cn.xxblog.demo.util.HexUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -15,9 +15,9 @@ public class ReceivedThread extends Thread {
 
     private Core core;
 
-    public ReceivedThread(Socket socket) {
+    public ReceivedThread(Socket socket, Core core) {
         this.socket = socket;
-        core = Core.getInstance();
+        this.core = core;
     }
 
     @Override

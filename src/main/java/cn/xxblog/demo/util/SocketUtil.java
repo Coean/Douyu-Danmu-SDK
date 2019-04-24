@@ -1,28 +1,36 @@
 package cn.xxblog.demo.util;
 
-import cn.xxblog.demo.Message;
+import cn.xxblog.demo.core.ReceivedThread;
+import cn.xxblog.demo.vo.Message;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import static cn.xxblog.demo.vo.Constants.DOUYU_HOST;
+import static cn.xxblog.demo.vo.Constants.DOUYU_PORT;
+
 /**
  * @author barryp
  */
 @Slf4j
+@Data
 public class SocketUtil {
-    public static final String host = "openbarrage.douyutv.com";
-    public static final Integer port = 8601;
 
-    static Socket socket;
+
+    private Socket socket;
 
     public SocketUtil() {
-        connect(host, port);
+        connect(DOUYU_HOST, DOUYU_PORT);
     }
 
 
-    public boolean connect(String host, Integer port) {
+    /**
+     * create socket connect
+     */
+    private boolean connect(String host, Integer port) {
         if (socket != null && socket.isConnected()) {
             return true;
         }
@@ -39,8 +47,8 @@ public class SocketUtil {
         log.info("send message:{}", message);
         if (socket == null || !socket.isConnected()) {
             log.info("connection is closed.");
-            if (connect(host, port)) {
-
+            if (connect(DOUYU_HOST, DOUYU_PORT)) {
+                //todo need hance this logic for handle the network issue.
             }
         }
         try {
@@ -53,17 +61,17 @@ public class SocketUtil {
     }
 
 
-    public static void main(String[] args) {
-        String login = "type@=loginreq/roomid@=757122/\0";
-        String joinGroup = "type@=joingroup/rid@=757122/gid@=-9999/\0";
-
-        SocketUtil socketUtil = new SocketUtil();
-        socketUtil.send(new Message(login));
-        socketUtil.send(new Message(joinGroup));
-
-        new KeepAliveThread().start();
-        new ReceivedThread(socket).start();
-
-        log.info("end");
-    }
+//    public static void main(String[] args) {
+//        String login = "type@=loginreq/roomid@=757122/\0";
+//        String joinGroup = "type@=joingroup/rid@=757122/gid@=-9999/\0";
+//
+//        SocketUtil socketUtil = new SocketUtil();
+//        socketUtil.send(new Message(login));
+//        socketUtil.send(new Message(joinGroup));
+//
+//        new KeepAliveThread().start();
+//        new ReceivedThread(socket).start();
+//
+//        log.info("end");
+//    }
 }
