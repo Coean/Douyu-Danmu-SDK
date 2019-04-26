@@ -3,7 +3,7 @@ package cn.xxblog.demo;
 import cn.xxblog.demo.core.Core;
 import cn.xxblog.demo.core.KeepAliveThread;
 import cn.xxblog.demo.core.ReceivedThread;
-import cn.xxblog.demo.listener.DefaultMsgListener;
+import cn.xxblog.demo.listener.MsgListener;
 import cn.xxblog.demo.util.SocketUtil;
 import cn.xxblog.demo.vo.BaseMsg;
 import cn.xxblog.demo.vo.Constants;
@@ -54,7 +54,7 @@ public class DanMuClient {
         socketUtil.send(Constants.loginMessage(roomId));
     }
 
-    public boolean addListener(DefaultMsgListener<? extends BaseMsg> listener) {
+    public boolean addListener(MsgListener<? extends BaseMsg> listener) {
         return core.registerListener(listener);
     }
 }
