@@ -9,6 +9,9 @@ import java.util.List;
 import cn.xxblog.demo.util.HexUtil;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @author Devpan
+ */
 @Slf4j
 public class ReceivedThread extends Thread {
     private Socket socket;

@@ -1,19 +1,18 @@
 package cn.xxblog.demo.util;
 
-import cn.xxblog.demo.core.ReceivedThread;
-import cn.xxblog.demo.vo.Message;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import static cn.xxblog.demo.vo.Constants.DOUYU_HOST;
+import static cn.xxblog.demo.vo.Constants.DOUYU_PORT;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 
-import static cn.xxblog.demo.vo.Constants.DOUYU_HOST;
-import static cn.xxblog.demo.vo.Constants.DOUYU_PORT;
+import cn.xxblog.demo.vo.Message;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author barryp
+ * @author devpan
  */
 @Slf4j
 @Data

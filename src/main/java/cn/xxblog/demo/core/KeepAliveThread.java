@@ -15,7 +15,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * it's a sin
- * @author PanHoucheng
+ * @author Devpan
  *
  */
 @Slf4j
@@ -45,7 +45,7 @@ public class KeepAliveThread extends Thread {
         if (roomSet.contains(roomSocket.getRoomId())) {
             throw new IllegalArgumentException(String.format("Room: %d already added into keep alive queue.", roomSocket.getRoomId()));
         }
-        if (queue.offer(roomSocket)) {
+        if (!queue.offer(roomSocket)) {
             throw new RuntimeException(String.format("RoomId: %d 无法添加任务到队列中！", roomSocket.getRoomId()));
         }
         roomSet.add(roomSocket.getRoomId());
@@ -72,11 +72,11 @@ public class KeepAliveThread extends Thread {
                 roomSocket.getSocketUtil().send(Constants.keepAliveMessage());
                 //更新下次运行时间
                 updateNextKeepAliveTime(roomSocket);
-                log.debug("Send keep alive message for Room: {%d}, next time is: {%s}", roomSocket.getRoomId(),
+                log.debug("Send keep alive message for Room: {}, next time is: {}", roomSocket.getRoomId(),
                         DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(
                                 LocalDateTime.ofInstant(Instant.ofEpochMilli(roomSocket.getNextKeepTime()), TimeZone.getDefault().toZoneId())));
                 //重新插入队列
-                if (queue.offer(roomSocket)) {
+                if (!queue.offer(roomSocket)) {
                     throw new RuntimeException(String.format("RoomId: %d 无法添加任务到队列中！", roomSocket.getRoomId()));
                 }
             } catch (InterruptedException e) {

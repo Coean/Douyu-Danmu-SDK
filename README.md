@@ -17,7 +17,35 @@
 
 #### 使用说明
 
-1. xxxx
+1.目前支持监听的消息类型
+  ```
+  //斗鱼推送的原消息
+  String
+  
+  //通用消息实体(用于处理所有接收到的消息)
+  BaseMsg
+  
+  //错误消息/系统消息
+  ErrorMsg
+  
+  //弹幕消息
+  ChatMsg
+  
+  //赠送礼物消息
+  DgbMsg
+  
+  //房间内用户抢红包消息
+  GgbbMsg
+  
+  //礼物广播消息
+  SpbcMsg
+  
+  //超级弹幕消息
+  SsdMsg
+  
+  //用户进房通知消息
+  UenterMsg
+  ```
 2. xxxx
 3. xxxx
 

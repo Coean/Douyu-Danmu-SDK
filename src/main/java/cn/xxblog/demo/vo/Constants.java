@@ -4,6 +4,9 @@ public class Constants {
 
     public static Long DEFAULT_KEEP_ALIVE_TIME = 42 * 1000L;
 
+    public static Integer DEFAULT_GROUP = -9999;
+
+
     public static final String DOUYU_HOST = "openbarrage.douyutv.com";
 
     public static final Integer DOUYU_PORT = 8601;
@@ -11,7 +14,7 @@ public class Constants {
     private static String KEEP_ALIVE = "type@=keeplive/tick@=%d/\0";
 
     private static String LOGIN_MESSAGE = "type@=loginreq/roomid@=%d/\0";
-    private static String JOIN_GROUP_MESSAGE = "type@=joingroup/rid@=%d/gid@=-9999/\0";
+    private static String JOIN_GROUP_MESSAGE = "type@=joingroup/rid@=%d/gid@=%d/\0";
 
 
     /**
@@ -25,7 +28,7 @@ public class Constants {
      * return join danmu group message
      */
     public static Message joinGroupMessage(Integer roomId) {
-        return new Message(String.format(JOIN_GROUP_MESSAGE, roomId));
+        return new Message(String.format(JOIN_GROUP_MESSAGE, roomId, DEFAULT_GROUP));
     }
 
     /**
