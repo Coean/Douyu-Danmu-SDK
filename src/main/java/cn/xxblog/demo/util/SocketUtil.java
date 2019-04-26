@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author devpan
+ * @author Devpan
  */
 @Slf4j
 @Data
@@ -55,22 +55,7 @@ public class SocketUtil {
             outputStream.write(message.getMessage().toByteArray());
             outputStream.flush();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getLocalizedMessage(), e);
         }
     }
-
-
-//    public static void main(String[] args) {
-//        String login = "type@=loginreq/roomid@=757122/\0";
-//        String joinGroup = "type@=joingroup/rid@=757122/gid@=-9999/\0";
-//
-//        SocketUtil socketUtil = new SocketUtil();
-//        socketUtil.send(new Message(login));
-//        socketUtil.send(new Message(joinGroup));
-//
-//        new KeepAliveThread().start();
-//        new ReceivedThread(socket).start();
-//
-//        log.info("end");
-//    }
 }
