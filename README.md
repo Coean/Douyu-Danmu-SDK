@@ -1,6 +1,7 @@
 # Douyu-Danmu-SDK
 
 [![Build Status](https://travis-ci.org/panhoucheng/Douyu-Danmu-SDK.svg?branch=master)](https://travis-ci.org/panhoucheng/Douyu-Danmu-SDK)
+[![Coverage Status](https://coveralls.io/repos/github/panhoucheng/Douyu-Danmu-SDK/badge.svg)](https://coveralls.io/github/panhoucheng/Douyu-Danmu-SDK)
 
 #### 介绍
 项目使用Maven + Java 开发
