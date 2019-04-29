@@ -18,13 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class SocketUtil {
 
-
     private Socket socket;
 
     public SocketUtil() {
         connect(DOUYU_HOST, DOUYU_PORT);
     }
-
 
     /**
      * create socket connect
@@ -47,7 +45,7 @@ public class SocketUtil {
         if (socket == null || !socket.isConnected()) {
             log.info("connection is closed.");
             if (connect(DOUYU_HOST, DOUYU_PORT)) {
-                //todo need hance this logic for handle the network issue.
+                //todo need enhance this logic for handle the network issue.
             }
         }
         try {

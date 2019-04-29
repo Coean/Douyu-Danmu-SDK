@@ -12,6 +12,9 @@ import cn.xxblog.demo.listener.MsgListener;
 import cn.xxblog.demo.vo.BaseMsg;
 import com.google.common.collect.Lists;
 
+/**
+ * @author Devpan
+ */
 public class Core {
 
     static Map<String, MsgConverter> registerConverter;
@@ -22,13 +25,8 @@ public class Core {
         listenerMap = new HashMap<>();
     }
 
-    //    public boolean registerConverter(MsgConverter msgConverter) {
-    //        registerConverter.put(msgConverter.converterMsgType().getType(), msgConverter);
-    //        return true;
-    //    }
-
     public boolean registerListener(MsgListener<? extends BaseMsg> msgListener) {
-        MsgType msgType = Optional.ofNullable(msgListener.getClass().getAnnotation(MsgType.class)).orElseThrow(() -> new RuntimeException());
+        MsgType msgType = Optional.ofNullable(msgListener.getClass().getAnnotation(MsgType.class)).orElseThrow(RuntimeException::new);
         return listenerMap.putIfAbsent(msgType.msgType(), Lists.newArrayList(msgListener)).add(msgListener);
     }
 
