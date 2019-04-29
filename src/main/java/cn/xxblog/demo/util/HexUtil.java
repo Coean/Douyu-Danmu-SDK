@@ -1,8 +1,8 @@
 package cn.xxblog.demo.util;
 
 /**
- * Created by Brucezz on 2016/01/04.
- * DouyuCrawler
+ *
+ * @author Devpan
  */
 public class HexUtil {
     private final static String HEX_STRING = "0123456789ABCDEF";
@@ -29,17 +29,10 @@ public class HexUtil {
     }
 
     /**
-     * @return 大写，' '空格连接
-     */
-    public static String bytes2HexStringWithSpace(byte[] b) {
-        return bytes2Hex(b).replace("-", " ");
-    }
-
-    /**
      * @return 十六进制字符串 转换为 字节数组
      */
     public static byte[] hexString2Bytes(String hexString) {
-        if (hexString == null || hexString.equals("")) {
+        if (hexString == null || "".equals(hexString)) {
             return null;
         }
         hexString = hexString.replace(" ", "");

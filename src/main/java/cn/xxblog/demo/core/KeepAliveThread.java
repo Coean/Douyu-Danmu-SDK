@@ -1,9 +1,5 @@
 package cn.xxblog.demo.core;
 
-import cn.xxblog.demo.vo.Constants;
-import cn.xxblog.demo.vo.RoomSocket;
-import lombok.extern.slf4j.Slf4j;
-
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,10 +9,14 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import cn.xxblog.demo.vo.Constants;
+import cn.xxblog.demo.vo.RoomSocket;
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * it's a sin
- * @author Devpan
  *
+ *
+ * @author Devpan
  */
 @Slf4j
 public class KeepAliveThread extends Thread {
@@ -25,7 +25,7 @@ public class KeepAliveThread extends Thread {
     private static Set roomSet;
     private static KeepAliveThread keepAliveThread;
 
-    private KeepAliveThread(){
+    private KeepAliveThread() {
     }
 
     public static synchronized KeepAliveThread getInstance() {
@@ -51,7 +51,7 @@ public class KeepAliveThread extends Thread {
         roomSet.add(roomSocket.getRoomId());
 
         //start thread.
-        if (!keepAliveThread.isAlive()){
+        if (!keepAliveThread.isAlive()) {
             keepAliveThread.start();
         }
     }
@@ -73,8 +73,8 @@ public class KeepAliveThread extends Thread {
                 //更新下次运行时间
                 updateNextKeepAliveTime(roomSocket);
                 log.debug("Send keep alive message for Room: {}, next time is: {}", roomSocket.getRoomId(),
-                        DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(
-                                LocalDateTime.ofInstant(Instant.ofEpochMilli(roomSocket.getNextKeepTime()), TimeZone.getDefault().toZoneId())));
+                          DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(
+                              LocalDateTime.ofInstant(Instant.ofEpochMilli(roomSocket.getNextKeepTime()), TimeZone.getDefault().toZoneId())));
                 //重新插入队列
                 if (!queue.offer(roomSocket)) {
                     throw new RuntimeException(String.format("RoomId: %d 无法添加任务到队列中！", roomSocket.getRoomId()));
@@ -86,7 +86,9 @@ public class KeepAliveThread extends Thread {
 
     }
 
-    // fill next keep alive time.
+    /**
+     * fill next keep alive time.
+     */
     private void updateNextKeepAliveTime(RoomSocket roomSocket) {
         roomSocket.setNextKeepTime(System.currentTimeMillis() + Constants.DEFAULT_KEEP_ALIVE_TIME);
     }
