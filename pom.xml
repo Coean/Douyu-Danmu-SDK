@@ -53,7 +53,7 @@
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
                 <configuration>
-                    <repoToken>${coverage_report_token}</repoToken>
+                    <repoToken>test</repoToken>
                 </configuration>
             </plugin>
             <plugin>

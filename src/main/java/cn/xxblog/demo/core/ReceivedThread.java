@@ -1,13 +1,13 @@
 package cn.xxblog.demo.core;
 
+import cn.xxblog.demo.util.HexUtil;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import cn.xxblog.demo.util.HexUtil;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Devpan
@@ -41,7 +41,7 @@ public class ReceivedThread extends Thread {
             System.out.println(socket.isConnected());
             log.info("receive message finished.");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getLocalizedMessage(), e);
         }
     }
 
