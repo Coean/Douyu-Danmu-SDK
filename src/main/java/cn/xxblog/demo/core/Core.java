@@ -33,6 +33,16 @@ public class Core {
     public void handMessage(String message) {
         //todo
 
+        // parse message type
+
+        // find msg listener
+
+        // if not found listener, fail-back to use default message listener
+
+        // add all message listener
+
+        // each call all listener.handleMessage method
+
         System.out.println(message);
     }
 

@@ -1,12 +1,16 @@
 package cn.xxblog.demo.vo;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
+/**
+ * @author Devpan
+ */
 @Data
 public class Message {
     private String message;
@@ -34,5 +38,12 @@ public class Message {
 
     public static byte[] intToByteArray(int input){
         return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(input).array();
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+               "message='" + message + '\'' +
+               '}';
     }
 }

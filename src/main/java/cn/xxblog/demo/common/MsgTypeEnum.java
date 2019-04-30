@@ -1,6 +1,8 @@
 package cn.xxblog.demo.common;
 
 public enum MsgTypeEnum {
+    //所有消息
+    ALL_MESSAGE("all"),
     //登录响应
     LOGIN_RES("loginres"),
     //服务心跳响应
