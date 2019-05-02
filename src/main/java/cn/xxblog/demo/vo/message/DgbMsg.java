@@ -1,14 +1,12 @@
 package cn.xxblog.demo.vo.message;
 
+import lombok.Data;
+
 /**
  * 功能描述：赠送礼物
  */
-public class DgbMsg implements MsgEntity {
-    /**
-     * 原消息
-     */
-    private String message;
-
+@Data
+public class DgbMsg extends BaseMsg {
     /**
      * 原消息ID
      */
@@ -84,153 +82,4 @@ public class DgbMsg implements MsgEntity {
      */
     private String hc;
 
-    public String getRid() {
-        return rid;
-    }
-
-    public void setRid(String rid) {
-        this.rid = rid;
-    }
-
-    public String getGid() {
-        return gid;
-    }
-
-    public void setGid(String gid) {
-        this.gid = gid;
-    }
-
-    public String getGfid() {
-        return gfid;
-    }
-
-    public void setGfid(String gfid) {
-        this.gfid = gfid;
-    }
-
-    public String getGs() {
-        return gs;
-    }
-
-    public void setGs(String gs) {
-        this.gs = gs;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getNn() {
-        return nn;
-    }
-
-    public void setNn(String nn) {
-        this.nn = nn;
-    }
-
-    public String getBg() {
-        return bg;
-    }
-
-    public void setBg(String bg) {
-        this.bg = bg;
-    }
-
-    public String getGfcnt() {
-        return gfcnt;
-    }
-
-    public void setGfcnt(String gfcnt) {
-        this.gfcnt = gfcnt;
-    }
-
-    public String getHits() {
-        return hits;
-    }
-
-    public void setHits(String hits) {
-        this.hits = hits;
-    }
-
-    public String getNl() {
-        return nl;
-    }
-
-    public void setNl(String nl) {
-        this.nl = nl;
-    }
-
-    public String getBnn() {
-        return bnn;
-    }
-
-    public void setBnn(String bnn) {
-        this.bnn = bnn;
-    }
-
-    public String getBl() {
-        return bl;
-    }
-
-    public void setBl(String bl) {
-        this.bl = bl;
-    }
-
-    public String getBrid() {
-        return brid;
-    }
-
-    public void setBrid(String brid) {
-        this.brid = brid;
-    }
-
-    public String getHc() {
-        return hc;
-    }
-
-    public void setHc(String hc) {
-        this.hc = hc;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getUuid() {
-        return uuid;
-    }
-
-    @Override
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    @Override
-    public String toString() {
-        return "DgbMsg{" +
-                "rid='" + rid + '\'' +
-                ", gid='" + gid + '\'' +
-                ", gfid='" + gfid + '\'' +
-                ", gs='" + gs + '\'' +
-                ", uid='" + uid + '\'' +
-                ", nn='" + nn + '\'' +
-                ", bg='" + bg + '\'' +
-                ", gfcnt='" + gfcnt + '\'' +
-                ", hits='" + hits + '\'' +
-                ", nl='" + nl + '\'' +
-                ", bnn='" + bnn + '\'' +
-                ", bl='" + bl + '\'' +
-                ", brid='" + brid + '\'' +
-                ", hc='" + hc + '\'' +
-                '}';
-    }
 }

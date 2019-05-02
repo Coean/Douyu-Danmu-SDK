@@ -1,18 +1,19 @@
 package cn.xxblog.demo.listener;
-import cn.xxblog.demo.vo.BaseMsg;
+
+import cn.xxblog.demo.common.MsgTypeEnum;
 
 /**
  * @author barryp
  * @create 2019-04-26 13:01
- *     description:
+ * description:
  */
-public interface MsgListener<T extends BaseMsg>  {
+public interface MsgListener {
 
     /**
      * @param message raw mssage from douyu server.
-     *
-     * @return T extends BaseMsg
-     * */
-    void handleMessage(T message);
+     * @param msgType message type
+     * @return String message
+     */
+    void handleMessage(MsgTypeEnum msgType, String message);
 
 }

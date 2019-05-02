@@ -1,6 +1,6 @@
 package cn.xxblog.demo.converter;
 
-import cn.xxblog.demo.vo.BaseMsg;
+import cn.xxblog.demo.vo.message.BaseMsg;
 
 public interface MsgConverter<T extends BaseMsg> {
      /**

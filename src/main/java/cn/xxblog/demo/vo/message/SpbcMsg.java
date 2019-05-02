@@ -1,17 +1,14 @@
 package cn.xxblog.demo.vo.message;
 
+import lombok.Data;
+
 /**
  * 功能描述：礼物广播消息
  *
- * @auther: coffee
- * @date: 2018-07-09 10:28:48
- * 修改日志:
+ * @auther: Devpan
  */
-public class SpbcMsg implements MsgEntity {
-    /**
-     * 原消息
-     */
-    private String message;
+@Data
+public class SpbcMsg extends BaseMsg {
 
     /**
      * 原消息ID
@@ -78,135 +75,4 @@ public class SpbcMsg implements MsgEntity {
      */
     private String eid;
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getUuid() {
-        return uuid;
-    }
-
-    @Override
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getRid() {
-        return rid;
-    }
-
-    public void setRid(String rid) {
-        this.rid = rid;
-    }
-
-    public String getGid() {
-        return gid;
-    }
-
-    public void setGid(String gid) {
-        this.gid = gid;
-    }
-
-    public String getSn() {
-        return sn;
-    }
-
-    public void setSn(String sn) {
-        this.sn = sn;
-    }
-
-    public String getDn() {
-        return dn;
-    }
-
-    public void setDn(String dn) {
-        this.dn = dn;
-    }
-
-    public String getGn() {
-        return gn;
-    }
-
-    public void setGn(String gn) {
-        this.gn = gn;
-    }
-
-    public String getGc() {
-        return gc;
-    }
-
-    public void setGc(String gc) {
-        this.gc = gc;
-    }
-
-    public String getDrid() {
-        return drid;
-    }
-
-    public void setDrid(String drid) {
-        this.drid = drid;
-    }
-
-    public String getGs() {
-        return gs;
-    }
-
-    public void setGs(String gs) {
-        this.gs = gs;
-    }
-
-    public String getGb() {
-        return gb;
-    }
-
-    public void setGb(String gb) {
-        this.gb = gb;
-    }
-
-    public String getEs() {
-        return es;
-    }
-
-    public void setEs(String es) {
-        this.es = es;
-    }
-
-    public String getGfid() {
-        return gfid;
-    }
-
-    public void setGfid(String gfid) {
-        this.gfid = gfid;
-    }
-
-    public String getEid() {
-        return eid;
-    }
-
-    public void setEid(String eid) {
-        this.eid = eid;
-    }
-
-    @Override
-    public String toString() {
-        return "SpbcMsg{" +
-                "rid='" + rid + '\'' +
-                ", gid='" + gid + '\'' +
-                ", sn='" + sn + '\'' +
-                ", dn='" + dn + '\'' +
-                ", gn='" + gn + '\'' +
-                ", gc='" + gc + '\'' +
-                ", drid='" + drid + '\'' +
-                ", gs='" + gs + '\'' +
-                ", gb='" + gb + '\'' +
-                ", es='" + es + '\'' +
-                ", gfid='" + gfid + '\'' +
-                ", eid='" + eid + '\'' +
-                '}';
-    }
 }

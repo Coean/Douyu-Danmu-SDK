@@ -1,14 +1,17 @@
 package cn.xxblog.demo.util;
-import java.util.Objects;
-import java.util.regex.Pattern;
 
 import cn.xxblog.demo.common.MsgTypeEnum;
+import cn.xxblog.demo.exception.DouyuSdkCommonException;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author barryp
  * @create 2019-04-30 17:10
- *     description:
+ * description:
  */
 @Slf4j
 public class MessageUtil {
@@ -20,10 +23,14 @@ public class MessageUtil {
             return null;
         }
         try {
-            String msgType = pattern.matcher(msg).group();
-            return MsgTypeEnum.valueOf(msgType);
+            Matcher matcher = pattern.matcher(msg);
+            if (matcher.find()) {
+                return MsgTypeEnum.findByName(matcher.group().replace("type@=", ""));
+            }
         } catch (IllegalArgumentException e) {
-            log.error("解析msg type失败," + e.getLocalizedMessage(), e);
+            log.debug("解析msg type失败," + e.getLocalizedMessage());
+        } catch (DouyuSdkCommonException e) {
+            log.debug("not found message type: {}", msg);
         }
         return null;
     }

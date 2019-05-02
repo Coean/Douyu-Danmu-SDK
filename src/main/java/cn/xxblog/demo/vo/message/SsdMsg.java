@@ -1,13 +1,12 @@
 package cn.xxblog.demo.vo.message;
 
+import lombok.Data;
+
 /**
  * 功能描述：超级弹幕消息
  */
-public class SsdMsg implements MsgEntity {
-    /**
-     * 原消息
-     */
-    private String message;
+@Data
+public class SsdMsg extends BaseMsg {
 
     /**
      * 原消息ID
@@ -39,72 +38,4 @@ public class SsdMsg implements MsgEntity {
      */
     private String content;
 
-    public String getSdid() {
-        return sdid;
-    }
-
-    public void setSdid(String sdid) {
-        this.sdid = sdid;
-    }
-
-    public String getRid() {
-        return rid;
-    }
-
-    public void setRid(String rid) {
-        this.rid = rid;
-    }
-
-    public String getGid() {
-        return gid;
-    }
-
-    public void setGid(String gid) {
-        this.gid = gid;
-    }
-
-    public String getTrid() {
-        return trid;
-    }
-
-    public void setTrid(String trid) {
-        this.trid = trid;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getUuid() {
-        return uuid;
-    }
-
-    @Override
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    @Override
-    public String toString() {
-        return "SsdMsg{" +
-                "sdid='" + sdid + '\'' +
-                ", rid='" + rid + '\'' +
-                ", gid='" + gid + '\'' +
-                ", trid='" + trid + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
 }

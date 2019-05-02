@@ -5,7 +5,6 @@ import cn.xxblog.demo.core.KeepAliveThread;
 import cn.xxblog.demo.core.ReceivedThread;
 import cn.xxblog.demo.listener.MsgListener;
 import cn.xxblog.demo.util.SocketUtil;
-import cn.xxblog.demo.vo.BaseMsg;
 import cn.xxblog.demo.vo.Constants;
 import cn.xxblog.demo.vo.RoomSocket;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +53,7 @@ public class DanMuClient {
         socketUtil.send(Constants.loginMessage(roomId));
     }
 
-    public boolean addListener(MsgListener<? extends BaseMsg> listener) {
+    public boolean addListener(MsgListener listener) {
         return core.registerListener(listener);
     }
 }

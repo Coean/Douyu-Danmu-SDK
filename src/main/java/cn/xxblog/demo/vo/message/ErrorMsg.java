@@ -1,5 +1,7 @@
 package cn.xxblog.demo.vo.message;
 
+import lombok.Data;
+
 /**
  * 功能描述：错误消息
  * <p>
@@ -8,16 +10,11 @@ package cn.xxblog.demo.vo.message;
  * 52           服务器关闭
  * 204          房间id错误
  *
- * @auther: coffee
  * @date: 2018-07-16 16:09:02
  * 修改日志:
  */
-public class ErrorMsg implements MsgEntity {
-    /**
-     * 原消息
-     */
-    private String message;
-
+@Data
+public class ErrorMsg extends BaseMsg {
     /**
      * 原消息ID
      */
@@ -32,14 +29,6 @@ public class ErrorMsg implements MsgEntity {
      * 错误描述
      */
     private String desc;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getDesc() {
         if (desc == null && code != null) {
@@ -61,25 +50,4 @@ public class ErrorMsg implements MsgEntity {
         return desc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getUuid() {
-        return uuid;
-    }
-
-    @Override
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
 }

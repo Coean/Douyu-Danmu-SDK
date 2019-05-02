@@ -1,12 +1,18 @@
 package cn.xxblog.demo.common;
 
+import cn.xxblog.demo.exception.DouyuSdkMessageTypeNotFoundException;
+
+import java.util.Arrays;
+
 public enum MsgTypeEnum {
     //所有消息
     ALL_MESSAGE("all"),
     //登录响应
     LOGIN_RES("loginres"),
     //服务心跳响应
-    KEEP_LIVE("loginres"),
+    KEEP_LIVE("keeplive"),
+    //服务器ping响应
+    PING_REQ("pingreq"),
     //弹幕消息
     CHAT_MSG("chatmsg"),
     //领取鱼丸暴击
@@ -39,5 +45,10 @@ public enum MsgTypeEnum {
 
     public String getType() {
         return type;
+    }
+
+    public static MsgTypeEnum findByName(String type) {
+        return Arrays.stream(MsgTypeEnum.values()).filter(t -> t.type.equals(type)).findFirst()
+                .orElseThrow(DouyuSdkMessageTypeNotFoundException::new);
     }
 }

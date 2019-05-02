@@ -5,15 +5,15 @@ import cn.xxblog.demo.common.MsgTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author Devpan
+ * @author devpan
  * description:
  */
+@MsgType(msgType = MsgTypeEnum.ALL_MESSAGE)
 @Slf4j
-@MsgType(msgType = MsgTypeEnum.CHAT_MSG)
-public class ChatMsgListener implements MsgListener {
+public class DefaultMsgListener implements MsgListener {
 
     @Override
     public void handleMessage(MsgTypeEnum msgType, String message) {
-        log.info("chat:" + message);
+        log.info("default:" + message);
     }
 }
