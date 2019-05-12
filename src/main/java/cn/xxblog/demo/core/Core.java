@@ -40,8 +40,6 @@ public class Core {
     }
 
     public void handMessage(String message) {
-        //todo
-
         // parse message type
         MsgTypeEnum msgTypeEnum = MessageUtil.parseMessageType(message);
         // find msg listener
@@ -54,6 +52,9 @@ public class Core {
                 // if not register any listener, fail-back to use default message listener
                 defaultMsgListener.handleMessage(MsgTypeEnum.ALL_MESSAGE, message);
             }
+        }
+        if (listenerMap.containsKey(MsgTypeEnum.ALL_MESSAGE)) {
+            listenerMap.get(MsgTypeEnum.ALL_MESSAGE).forEach(l -> l.handleMessage(msgTypeEnum, message));
         }
     }
 
