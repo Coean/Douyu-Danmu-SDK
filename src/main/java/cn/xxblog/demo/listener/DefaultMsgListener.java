@@ -2,6 +2,7 @@ package cn.xxblog.demo.listener;
 
 import cn.xxblog.demo.common.MsgType;
 import cn.xxblog.demo.common.MsgTypeEnum;
+import cn.xxblog.demo.vo.message.BaseMsg;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -13,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultMsgListener implements MsgListener {
 
     @Override
-    public void handleMessage(MsgTypeEnum msgType, String message) {
-        log.info("default:" + message);
+    public void handleMessage(MsgTypeEnum msgType, BaseMsg message) {
+        log.info("default:" + message.getMessage());
     }
 }

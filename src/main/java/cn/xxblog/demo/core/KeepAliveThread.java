@@ -68,7 +68,7 @@ public class KeepAliveThread extends Thread {
                     //等待
                     Thread.sleep(roomSocket.getNextKeepTime() - System.currentTimeMillis());
                 }
-                //发生保持在线指令
+                //发送保持在线指令
                 roomSocket.getSocketUtil().send(Constants.keepAliveMessage());
                 //更新下次运行时间
                 updateNextKeepAliveTime(roomSocket);

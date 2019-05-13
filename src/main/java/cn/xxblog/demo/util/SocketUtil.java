@@ -31,7 +31,7 @@ public class SocketUtil {
         if (socket != null && socket.isConnected()) {
             return true;
         }
-        log.info("connect");
+        log.debug("connect");
         try {
             socket = new Socket(host, port);
         } catch (IOException e) {
@@ -41,7 +41,7 @@ public class SocketUtil {
     }
 
     public synchronized void send(Message message) {
-        log.info("send message:{}", message);
+        log.debug("send message:{}", message);
         if (socket == null || !socket.isConnected()) {
             log.info("connection is closed.");
             if (connect(DOUYU_HOST, DOUYU_PORT)) {
