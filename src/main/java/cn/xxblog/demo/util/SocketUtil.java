@@ -6,6 +6,7 @@ import static cn.xxblog.demo.vo.Constants.DOUYU_PORT;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 import cn.xxblog.demo.vo.Message;
 import lombok.Data;
@@ -52,8 +53,19 @@ public class SocketUtil {
             OutputStream outputStream = socket.getOutputStream();
             outputStream.write(message.getMessage().toByteArray());
             outputStream.flush();
+        } catch (SocketException e) {
+            reConnect();
         } catch (Exception e) {
             log.error(e.getLocalizedMessage(), e);
+        }
+    }
+
+    private void reConnect() {
+        log.debug("re-connect");
+        try {
+            socket = new Socket(DOUYU_HOST, DOUYU_PORT);
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
         }
     }
 }
