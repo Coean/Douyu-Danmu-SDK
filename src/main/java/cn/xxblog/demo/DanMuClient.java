@@ -35,8 +35,14 @@ public class DanMuClient {
         login();
         //join danmu group
         joinDanMuGroup();
+        // 斗鱼弹幕接收全部礼物
+        getAllGift();
         //add socket into keep alive thread
         KeepAliveThread.getInstance().addRoom(RoomSocket.builder().roomId(roomId).socketUtil(socketUtil).build());
+    }
+
+    private void getAllGift() {
+        socketUtil.send(Constants.getAllGift());
     }
 
     /**

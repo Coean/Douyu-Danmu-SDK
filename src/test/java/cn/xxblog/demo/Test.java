@@ -1,6 +1,6 @@
 package cn.xxblog.demo;
 
-import cn.xxblog.demo.listener.ChatMsgListener;
+import cn.xxblog.demo.listener.GiftMsgListener;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -11,9 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Test {
     public static void main(String[] args) {
-        DanMuClient danMuClient = new DanMuClient(757122);
-        danMuClient.addListener(new ChatMsgListener());
+        DanMuClient danMuClient = new DanMuClient(485503);
+        danMuClient.addListener(new GiftMsgListener());
         danMuClient.start();
+//        MapToVoUtil<ChatMsg> mapToVoUtil  = new MapToVoUtil<ChatMsg>();
+//        ChatMsg chatMsg = mapToVoUtil.convertByMap(new HashMap<>());
+
     }
 
 }
