@@ -1,9 +1,5 @@
 package cn.xxblog.demo.core;
 
-import cn.xxblog.demo.vo.Constants;
-import cn.xxblog.demo.vo.RoomSocket;
-import lombok.extern.slf4j.Slf4j;
-
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,6 +8,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.LinkedBlockingQueue;
+
+import cn.xxblog.demo.vo.Constants;
+import cn.xxblog.demo.vo.RoomSocket;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  *
@@ -68,7 +68,7 @@ public class KeepAliveThread extends Thread {
                     //等待
                     Thread.sleep(roomSocket.getNextKeepTime() - System.currentTimeMillis());
                 }
-                //发生保持在线指令
+                //发送保持在线指令
                 roomSocket.getSocketUtil().send(Constants.keepAliveMessage());
                 //更新下次运行时间
                 updateNextKeepAliveTime(roomSocket);

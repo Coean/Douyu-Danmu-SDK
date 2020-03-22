@@ -14,9 +14,6 @@ public class Test {
         DanMuClient danMuClient = new DanMuClient(485503);
         danMuClient.addListener(new GiftMsgListener());
         danMuClient.start();
-//        MapToVoUtil<ChatMsg> mapToVoUtil  = new MapToVoUtil<ChatMsg>();
-//        ChatMsg chatMsg = mapToVoUtil.convertByMap(new HashMap<>());
-
     }
 
 }
