@@ -12,5 +12,5 @@ public class BaseMsg implements Serializable {
 
     private String type;
 
-    private String message;
+    private String rawMessage;
 }

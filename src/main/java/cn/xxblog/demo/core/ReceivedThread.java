@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Devpan
@@ -17,6 +18,8 @@ public class ReceivedThread extends Thread {
     private Socket socket;
 
     private Core core;
+
+    private static String tempStr;
 
     public ReceivedThread(Socket socket, Core core) {
         this.socket = socket;
@@ -60,11 +63,16 @@ public class ReceivedThread extends Thread {
 
         List<String> resList = new ArrayList<>();
         String byteArray = HexUtil.bytes2HexString(buffer).toLowerCase();
+        if (Objects.nonNull(tempStr) && !"".equals(tempStr)) {
+            byteArray = tempStr + byteArray;
+            tempStr = "";
+        }
 
         String[] responseStrings = byteArray.split("b2020000");
         int end;
-        for (int i = 1; i < responseStrings.length; i++) {
+        for (int i = 0; i < responseStrings.length; i++) {
             if (!responseStrings[i].contains("00")) {
+                tempStr = responseStrings[i];
                 continue;
             }
             end = responseStrings[i].indexOf("00");

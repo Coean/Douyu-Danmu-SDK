@@ -11,7 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Test {
     public static void main(String[] args) {
-        DanMuClient danMuClient = new DanMuClient(485503);
+        DanMuClient danMuClient = new DanMuClient(2947432);
+        // danMuClient.addListener(new DefaultMsgListener());
         danMuClient.addListener(new GiftMsgListener());
         danMuClient.start();
     }

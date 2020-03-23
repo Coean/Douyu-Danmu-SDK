@@ -1,5 +1,6 @@
 package cn.xxblog.demo.converter;
 
+import java.util.Map;
 import java.util.Objects;
 
 import cn.xxblog.demo.util.MapToVoUtil;
@@ -18,8 +19,17 @@ public class DefaultMsgConverterImpl<T extends BaseMsg> implements MsgConverter<
     @Override
     public T convertMessage(String msg, Class<T> msgTypeClass) {
         if (Objects.isNull(msg) || msg.isEmpty()) {
-            return null;
+            T t = null;
+            try {
+                t = msgTypeClass.newInstance();
+            } catch (ReflectiveOperationException e) {
+                log.error(e.getLocalizedMessage(), e);
+            }
+            return t;
         }
-        return util.convertByMap(MessageUtil.splitMessage(msg), msgTypeClass);
+        Map<String, String> map = MessageUtil.splitMessage(msg);
+        T t = util.convertByMap(map, msgTypeClass);
+        t.setRawMessage(msg);
+        return t;
     }
 }

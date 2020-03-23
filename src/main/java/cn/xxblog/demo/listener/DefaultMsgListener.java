@@ -15,6 +15,6 @@ public class DefaultMsgListener implements MsgListener {
 
     @Override
     public void handleMessage(MsgTypeEnum msgType, BaseMsg message) {
-        log.info("default:" + message.getMessage());
+        log.info("default:" + message.getRawMessage());
     }
 }

@@ -17,7 +17,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-            <version>LATEST</version>
+            <version>1.18.12</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -27,13 +27,15 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>LATEST</version>
+            <version>1.7.26</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>LATEST</version>
+            <version>1.7.26</version>
+<!--            <scope>test</scope>-->
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -53,14 +55,14 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>4.3.0</version>
-                <configuration>
-                    <repoToken>test</repoToken>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.eluder.coveralls</groupId>-->
+<!--                <artifactId>coveralls-maven-plugin</artifactId>-->
+<!--                <version>4.3.0</version>-->
+<!--                <configuration>-->
+<!--                    <repoToken>${coverage_report_token}</repoToken>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

@@ -43,6 +43,11 @@ public class DgbMsg extends BaseMsg {
     private String nn;
 
     /**
+     * 用户等级
+     */
+    private String level;
+
+    /**
      * 大礼物标识：默认值为 0（表示是小礼物）
      */
     private String bg;
@@ -51,6 +56,16 @@ public class DgbMsg extends BaseMsg {
      * 礼物个数：默认值 1（表示 1 个礼物）
      */
     private String gfcnt;
+
+    /**
+     * 礼物连送数量
+     */
+    private String bcnt;
+
+    /**
+     * 礼物价值
+     */
+    private String bst;
 
     /**
      * 礼物连击次数：默认值 1（表示 1 连击）
