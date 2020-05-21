@@ -104,7 +104,7 @@ public class DgbMsg extends BaseMsg {
 
     /**
      * 接受消息时间戳
-     * */
-    private long ts;
+     */
+    private long ts = System.currentTimeMillis();
 
 }
