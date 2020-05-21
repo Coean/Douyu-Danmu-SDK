@@ -20,9 +20,14 @@ import lombok.extern.slf4j.Slf4j;
 public class SocketUtil {
 
     private Socket socket;
+    private boolean closeFlag = false;
 
     public SocketUtil() {
         connect(DOUYU_HOST, DOUYU_PORT);
+    }
+
+    public SocketUtil(String douyuHost, Integer port) {
+        connect(douyuHost, port);
     }
 
     /**
@@ -41,8 +46,25 @@ public class SocketUtil {
         return socket.isConnected();
     }
 
+    /**
+     * close socket connect
+     */
+    public void close() {
+        try {
+            if (socket != null) {
+                socket.close();
+            }
+            closeFlag = false;
+        } catch (IOException e) {
+            log.error(e.getLocalizedMessage(), e);
+        }
+    }
+
     public synchronized void send(Message message) {
         log.debug("send message:{}", message);
+        if (closeFlag) {
+            log.debug("connect is closed");
+        }
         if (socket == null || !socket.isConnected()) {
             log.info("connection is closed.");
             if (connect(DOUYU_HOST, DOUYU_PORT)) {

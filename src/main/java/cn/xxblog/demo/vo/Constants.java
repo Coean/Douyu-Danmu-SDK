@@ -6,10 +6,11 @@ public class Constants {
 
     public static Integer DEFAULT_GROUP = -9999;
 
-
+    // public static final String DOUYU_HOST = "118.118.218.251";
     public static final String DOUYU_HOST = "danmuproxy.douyu.com";
 
     public static final Integer DOUYU_PORT = 8601;
+    // public static final Integer DOUYU_PORT = 12602;
 
     private static String KEEP_ALIVE = "type@=keeplive/tick@=%d/\0";
 

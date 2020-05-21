@@ -97,4 +97,14 @@ public class DgbMsg extends BaseMsg {
      */
     private String hc;
 
+    /**
+     * 头像
+     */
+    private String ic;
+
+    /**
+     * 接受消息时间戳
+     * */
+    private long ts;
+
 }

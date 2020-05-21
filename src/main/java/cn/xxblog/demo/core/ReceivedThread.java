@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -43,6 +44,9 @@ public class ReceivedThread extends Thread {
             }
             System.out.println(socket.isConnected());
             log.info("receive message finished.");
+        } catch (SocketException e) {
+            // todo
+            //re-connect
         } catch (Exception e) {
             log.error(e.getLocalizedMessage(), e);
         }

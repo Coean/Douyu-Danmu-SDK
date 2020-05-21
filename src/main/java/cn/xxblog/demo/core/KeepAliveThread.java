@@ -14,8 +14,6 @@ import cn.xxblog.demo.vo.RoomSocket;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- *
- *
  * @author Devpan
  */
 @Slf4j
@@ -91,6 +89,14 @@ public class KeepAliveThread extends Thread {
      */
     private void updateNextKeepAliveTime(RoomSocket roomSocket) {
         roomSocket.setNextKeepTime(System.currentTimeMillis() + Constants.DEFAULT_KEEP_ALIVE_TIME);
+    }
+
+    public void removeRoom(Integer roomId) {
+        if (!roomSet.contains(roomId)) {
+            log.error("Not Found Room: {} in queue.", roomId);
+        }
+        queue.removeIf(q -> q.getRoomId().equals(roomId));
+        roomSet.remove(roomId);
     }
 }
 
