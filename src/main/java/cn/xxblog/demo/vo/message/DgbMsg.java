@@ -102,6 +102,8 @@ public class DgbMsg extends BaseMsg {
      */
     private String ic;
 
+    private Integer pid;
+
     /**
      * 接受消息时间戳
      */
