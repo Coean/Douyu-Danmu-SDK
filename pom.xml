@@ -55,14 +55,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.eluder.coveralls</groupId>-->
-<!--                <artifactId>coveralls-maven-plugin</artifactId>-->
-<!--                <version>4.3.0</version>-->
-<!--                <configuration>-->
-<!--                    <repoToken>${coverage_report_token}</repoToken>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -87,4 +79,15 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>http://repo.rdc.aliyun.com/repository/2026928-release-ANTxrx/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/2026928-snapshot-mbJ5Kp/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
